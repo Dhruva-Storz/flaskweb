@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="spacer"> </div>
+
+    <div class="wrapper">
+        <div class="form">
+        Enter a topic you would like to analyse
+        <form action="/" method="POST">
+            <input type="text">
+            <input type="submit" value="Analyse">
+        </form>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

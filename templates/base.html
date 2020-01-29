@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+
+    <head>
+        <title> Sentinel </title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}" >
+        {% block head %}{% endblock %}
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <img src="{{url_for('static', filename='logo.png')}}" style="width:200px;" />
+        </div>
+        {% block body %}{% endblock %}
+    </body>
+
+</html>
