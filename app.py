@@ -1,8 +1,14 @@
 from flask import Flask, render_template, url_for, request, redirect
 import os
 
+from crawler import TwitterClient, TweetCleaner
+
+
 
 app = Flask(__name__)
+client = TwitterClient()
+cleaner = TweetCleaner()
+clean = False
 
 
 
@@ -12,8 +18,12 @@ def index():
         search_content = request.form["input"]
         
         ## Do processing on text and pass to text object below
+        text = client.get_tweets_for_keyword(search_content)
+        if clean:
+            text = cleaner.process_tweets(text)
+        # print(text)
 
-        return render_template('d3.html', text=search_content)
+        return render_template('d3.html', text=text)
     else:
         return render_template('index.html')
 
@@ -48,4 +58,6 @@ def dated_url_for(endpoint, **values):
 
 
 if __name__ == '__main__':
+    
+    
     app.run(debug=True, use_reloader=False)

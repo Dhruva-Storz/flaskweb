@@ -7,9 +7,11 @@
 {% block body %}
 
   <div class="box">
+    {% for tweet in text %}
     <p>
-      {{ text }}
+      {{ tweet }}
     </p>
+    {% endfor %}
   </div>
 
 {% endblock %}
